@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items>
+  <% @products.each do |product| %>
+    <% collection = product.collections.try(:first) %>
+    <% product.variants.each do |variant| %>
+      <item>
+        <sku><%= variant.sku%></sku>
+        <first_category url_value="<%= default_url(collection) %>" variant_group_name="str1234" ><%= collection.try(:first).try(:title) %>"</first_category>
+        <description><![CDATA[<%= product.body_html.html_safe %>]]></description>
+        <brand url_value="<%= default_url(product) %>" variant_group_name="str1234"><%= product.vendor %></brand>
+        <price><%= variant.price %></price>
+        <title>><%= product.title %></title>
+        <product_type>><%= product.product_type %></product_type>
+        <vendor>><%= product.vendor %></vendor>
+     </item>
+    <% end %>
+  <% end %>
+</items>
+  
