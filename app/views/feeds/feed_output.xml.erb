@@ -5,13 +5,12 @@
     <% product.variants.each do |variant| %>
       <item>
         <sku><%= variant.sku%></sku>
-        <first_category url_value="<%= default_url(collection) %>" variant_group_name="str1234" ><%= collection.try(:first).try(:title) %>"</first_category>
+        <first_category url_value="<%= default_url(collection) %>"><%= collection.try(:title) %></first_category>
         <description><![CDATA[<%= product.body_html.html_safe %>]]></description>
-        <brand url_value="<%= default_url(product) %>" variant_group_name="str1234"><%= product.vendor %></brand>
+        <brand><%= product.vendor %></brand>
         <price><%= variant.price %></price>
-        <title>><%= product.title %></title>
-        <product_type>><%= product.product_type %></product_type>
-        <vendor>><%= product.vendor %></vendor>
+        <product><%= product.title %></product>
+        <url><%= default_url(product) %></url>
      </item>
     <% end %>
   <% end %>

@@ -13,7 +13,8 @@ class FeedsController < ApplicationController
     begin
       @products = ShopifyAPI::Product.all
     rescue Exception => e
-      
+      flash[:danger] = e
+      redirect_to root_path
     end
   end
 
